@@ -5,9 +5,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from DataTransformation import LowPassFilter, PrincipalComponentAnalysis
-from TemporalAbstraction import NumericalAbstraction
-from FrequencyAbstraction import FourierTransformation
+from remote import DataTransformation, TemporalAbstraction, FrequencyAbstraction
 from tslearn.clustering import TimeSeriesKMeans
 from sklearn.cluster import HDBSCAN
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
@@ -28,7 +26,7 @@ plt.rcParams["figure.dpi"] = 100
 # ----------------------------------------------------------------------------------------------------------
 
 lowpass_df = df.copy()
-LowPass = LowPassFilter()
+LowPass = DataTransformation.LowPassFilter()
 
 fs = 1 / 60
 cutoff = fs / 12
@@ -55,7 +53,7 @@ lowpass_df.drop(columns=["bpm_lowpass"], inplace=True)
 # ----------------------------------------------------------------------------------------------------------
 
 temporal_df = lowpass_df.copy()
-NumAbs = NumericalAbstraction()
+NumAbs = TemporalAbstraction.NumericalAbstraction()
 ws = 5
 
 # Statistical features
@@ -72,7 +70,7 @@ temporal_df["bpm_lag_5"] = temporal_df["bpm"].shift(5)
 # ----------------------------------------------------------------------------------------------------------
 
 frequency_df = temporal_df.copy().reset_index()
-FreqAbs = FourierTransformation()
+FreqAbs = FrequencyAbstraction.FourierTransformation()
 
 fs = 1 / 60
 ws = 60
@@ -93,7 +91,7 @@ frequency_df = frequency_df.set_index("datetime", drop=True)
 # ----------------------------------------------------------------------------------------------------------
 
 pca_df = frequency_df.copy()
-PCA = PrincipalComponentAnalysis()
+PCA = DataTransformation.PrincipalComponentAnalysis()
 
 # Disclaimer: Theoratically should only work on continuous variables
 pred_columns = [
