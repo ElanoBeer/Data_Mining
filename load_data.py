@@ -11,8 +11,8 @@ import datetime
 
 hr_df = pd.read_csv("tracker_data\HEARTRATE_AUTO\HEARTRATE_AUTO_1696925366934.csv")
 hr_df.rename(columns={"heartRate": "bpm"}, inplace=True)
-sleep_df = pd.read_csv("tracker_data\SLEEP\SLEEP_1696925366859.csv")
 
+sleep_df = pd.read_csv("tracker_data\SLEEP\SLEEP_1696925366859.csv")
 sleep_df["duration"] = pd.to_datetime(sleep_df["stop"]) - pd.to_datetime(
     sleep_df["start"]
 )
@@ -37,6 +37,7 @@ df["label"] = df["datetime"].apply(lambda x: 0 if x < pd.Timestamp("2023-10-02")
 
 df["day"] = df["datetime"].dt.day
 df["month"] = df["datetime"].dt.month
+df["hour"] = df["datetime"].dt.hour
 df["week"] = df["datetime"].dt.isocalendar().week
 df["weekday"] = df["datetime"].dt.weekday
 
