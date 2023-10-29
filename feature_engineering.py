@@ -5,11 +5,13 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 from remote import DataTransformation, TemporalAbstraction, FrequencyAbstraction
 from tslearn.clustering import TimeSeriesKMeans
 from sklearn.cluster import HDBSCAN
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from scipy.interpolate import interp1d
 
 # ----------------------------------------------------------------------------------------------------------
 # Load data and functions
@@ -47,6 +49,26 @@ ax[0].legend(), ax[1].legend()
 # Replace the lowpass filter bpm for bpm
 lowpass_df["bpm"] = lowpass_df["bpm_lowpass"]
 lowpass_df.drop(columns=["bpm_lowpass"], inplace=True)
+
+# ----------------------------------------------------------------------------------------------------------
+# BPM other transformations
+# ----------------------------------------------------------------------------------------------------------
+
+transform_df = lowpass_df.copy()
+
+# perform polynomial smoothing
+coefficients = np.polyfit(range(len(transform_df[["bpm"]])), transform_df["bpm"], 5)
+transform_df["bpm_poly"] = np.poly1d(coefficients)(range(len(transform_df["bpm"])))
+transform_df["bpm_poly"].plot()
+
+# Calculate the time difference between consecutive time points
+transform_df = transform_df.reset_index()
+time_diff = transform_df["datetime"].diff().dt.total_seconds().fillna(0)
+
+# Calculate the BPM derivative (rate of change)
+transform_df["bpm_derivative"] = (
+    transform_df["bpm"].diff().div(time_diff.where(time_diff != 0)).fillna(0)
+)
 
 # ----------------------------------------------------------------------------------------------------------
 # Temporal abstraction
