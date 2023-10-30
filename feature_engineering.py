@@ -10,8 +10,7 @@ from remote import DataTransformation, TemporalAbstraction, FrequencyAbstraction
 from tslearn.clustering import TimeSeriesKMeans
 from sklearn.cluster import HDBSCAN
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.preprocessing import StandardScaler, PolynomialFeatures
-from scipy.interpolate import interp1d
+from sklearn.preprocessing import StandardScaler
 
 # ----------------------------------------------------------------------------------------------------------
 # Load data and functions
@@ -122,9 +121,6 @@ pred_columns = [
     "wakeTime",
     "REMTime",
     "duration",
-    "day",
-    "month",
-    "week",
     "weekday",
     "bpm",
 ]
@@ -153,9 +149,6 @@ pred_columns = [
     "wakeTime",
     "REMTime",
     "duration",
-    "day",
-    "month",
-    "week",
     "weekday",
     "bpm",
 ]
