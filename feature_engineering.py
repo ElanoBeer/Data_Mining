@@ -68,6 +68,7 @@ time_diff = transform_df["datetime"].diff().dt.total_seconds().fillna(0)
 transform_df["bpm_derivative"] = (
     transform_df["bpm"].diff().div(time_diff.where(time_diff != 0)).fillna(0)
 )
+transform_df["bpm_derivative"].plot()
 
 # ----------------------------------------------------------------------------------------------------------
 # Temporal abstraction
@@ -98,7 +99,7 @@ ws = 60
 
 frequency_df = FreqAbs.abstract_frequency(frequency_df, ["bpm"], ws, fs)
 
-subset = frequency_df[frequency_df["day"] == 23]
+subset = frequency_df[frequency_df["day"] == 22]
 subset[["bpm"]].plot()
 subset[["bpm_freq_weighted", "bpm_pse"]].plot()
 subset[["bpm_max_freq"]].plot()
