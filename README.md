@@ -13,4 +13,19 @@ The data of the fourth subject can be found [here]()
 The data of the fifth subject can be found [here]()
 
 The data is all produced in the same format. The data already contain a preprocessed pandas dataframe which can be opened using pd.read_pickle. The data in the dataframe had the following format:
-* 
+* datetime (index): This is the date and the minute in which the bpm was recorded, for all other variables it reflects the sleep statistics of the date
+* bpm: This is the number of beats per minute of the heart as recorded by the smartwatch
+* deepSleepTime: This describes the number of minutes which the person spent in deep sleep during the night as recorded by the smartwatch
+* shallowSleepTime: This describes the number of minutes which the person spent in shallow sleep during the night as recorded by the smartwatch
+* wakeTime: This describes the number of minutes which the person spent in awake during the sleep as recorded by the smartwatch
+* REMTime: This describes the number of minutes which the person spent in REM sleep during the night as recorded by the smartwatch
+* start: This describes the exact date and time when the person started his/her sleep for the night, as recorded by the smartwatch
+* stop: This describes the exact date and time when the person stopped his/her sleep for the night, as recorded by the smartwatch
+* naps: This describes the number of minutes the person took naps during the day, as recorded by the smartwatch (this only include naps which are longer than 20 minutes)
+* duration: The total duration of the sleep of this person as indicated in minutes
+* label: The variable of interest, indicates whether the person has meditated before going to sleep
+* day: This includes a number with the day of the month, so for instance, for October 31st, this would display 31
+* month: This includes a number which represents the month, so for instance, for October 31st, this would display 10
+* hour: This includes a number which represents the hour which the heart rate was monitored, so for instance, for October 31st 13:30, this would display 13
+* week: This includes a number which represents the week, so for instance, for October 31st, this would display 44
+* week: This includes a number which represents the day of the week, starting from 0 on Monday and ending at 6 on a Sunday, so for instance, for October 31st, which is a Tuesday, this would display 1. 
