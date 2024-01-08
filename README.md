@@ -28,4 +28,6 @@ The data is all produced in the same format. The data already contain a preproce
 * month: This includes a number which represents the month, so for instance, for October 31st, this would display 10
 * hour: This includes a number which represents the hour which the heart rate was monitored, so for instance, for October 31st 13:30, this would display 13
 * week: This includes a number which represents the week, so for instance, for October 31st, this would display 44
-* week: This includes a number which represents the day of the week, starting from 0 on Monday and ending at 6 on a Sunday, so for instance, for October 31st, which is a Tuesday, this would display 1. 
+* week: This includes a number which represents the day of the week, starting from 0 on Monday and ending at 6 on a Sunday, so for instance, for October 31st, which is a Tuesday, this would display 1.
+
+This data is available under the Creative Commons Attribution-NonCommercial-ShareAlike License as is enclosed in this repository
