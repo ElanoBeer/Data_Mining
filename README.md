@@ -6,11 +6,11 @@ To be able to conduct the trial, there were two weeks of testing and two weeks o
 
 As students there were of course some variables which might be seen as bottlenecks and which should be taken into account. For instance, there are varying variances and length of sleep schedules leading to the data having to be normalized with a metric like percentages. Next, alcohol usage causes a higher heart rate due to the fact that the liver needs to filter this. Thus, leading to possible distorted values in these nights. Moreover, there were a variety of different watches which were used to track the data. Where subjects 1-4 used the Xiaomi Smartband 7, subject 5 used the Apple Watch SE 2, which have different sensors and different ways of measuring. Therefore, it is possible that there is a deviation between the readings of these subjects. Finally, it became apparent that for some students there were some nights for which no sleeping data was recorded, which could either originate from a measurement error, or from the fact that a student forgot to wear his/her smartwatch
 
-The data of the first subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject1.git)
-The data of the second subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject2.git)
-The data of the third subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject3.git)
-The data of the fourth subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject4.git)
-The data of the fifth subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject5.git)
+The data of the first subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject1.git) <br />
+The data of the second subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject2.git) <br />
+The data of the third subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject3.git) <br />
+The data of the fourth subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject4.git) <br />
+The data of the fifth subject can be found [here](https://github.com/WouterMulder9/Data_Mining_subject5.git) 
 
 The data is all produced in the same format. The data already contain a preprocessed pandas dataframe which can be opened using pd.read_pickle. The data in the dataframe had the following format:
 * datetime (index): This is the date and the minute in which the bpm was recorded, for all other variables it reflects the sleep statistics of the date
